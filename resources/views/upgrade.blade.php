@@ -69,9 +69,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="typography">
+                    <a href="create">
                         <i class="ti-text"></i>
-                        <p>Typography</p>
+                        <p>create</p>
                     </a>
                 </li>
                 <li>

@@ -67,9 +67,9 @@
                     </a>
                 </li>
                 <li  class="active">
-                    <a href="typography">
+                    <a href="create">
                         <i class="ti-text"></i>
-                        <p>Typography</p>
+                        <p>create</p>
                     </a>
                 </li>
                 <li>
@@ -110,7 +110,7 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Typography</a>
+                    <a class="navbar-brand" href="#">create</a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -150,6 +150,17 @@
 
         <div class="content">
             <div class="container-fluid">
+            @if(session()->has('notif'))
+                <div class="row">
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" area-hidden="true">&times;</button>
+                        <strong>Notification</strong>
+                        {{ session()->get('notif') }}
+                    </div>
+                </div>
+            @endif
+            </div>
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -163,19 +174,26 @@
                                   <form class="form-inline" action="/table" method="POST">
                                     {{ csrf_field() }}
                                     <div class="form-group">
-                                      <label for="text">Email:</label>
-                                      <input type="text" class="form-control" id="text" placeholder="Enter email" name="title">
-                                    </div>
-                                    <div class="form-group">
-                                      <label for="pwd">Password:</label>
-                                      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="content">
+                                      <label for="text">Name:</label>
+                                      <input type="text" class="form-control" id="text" placeholder="Enter email" name="name">
                                     </div>
                                     <div class="checkbox">
                                       <label><input type="checkbox" name="remember"> Remember me</label>
                                     </div>
-                                    <button type="submit" class="btn btn-default">Submit</button>
+                                    <div id="items">
+                                        <select class="custom-select-sm" name="item[]">
+                                            <option selected>Custom Select Menu</option>
+                                            <option value="Monitor">Monitor</option>
+                                            <option value="Laptop">Laptop</option>
+                                            <option value="Projector">Projector</option>
+                                        </select>
+                                        <input type="tel" name="qty[]" maxlength="2" min="1">
+                                    </div>
+                                    <button type="button" class="btn btn-default" value="add-entry" id="add">add</button>
+                                    <button type="submit" class="btn btn-default" value="add-entry" id="add">Submit</button>
                                   </form>
                                 </div>
+                                
 
                             </div>
                         </div>
@@ -219,7 +237,7 @@
 
 
 </body>
-
+    
     <!--   Core JS Files   -->
     <script src="{{URL::to('/js/jquery-1.10.2.js')}}" type="text/javascript"></script>
 	<script src="{{URL::to('/js/bootstrap.min.js')}}" type="text/javascript"></script>
@@ -241,5 +259,15 @@
 
 	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 	<script src="{{URL::to('/js/demo.js')}}"></script>
-
+    <script type="text/javascript">
+        $(document).ready(function(){
+            event.preventDefault();
+            $('#add').click(function(e){
+                $('#items').append('<div><select class="custom-select-sm" name="item[]"><option selected>Custom Select Menu</option><option value="Monitor">Monitor</option><option value="Laptop">Laptop</option><option value="Projector">Projector</option></select><input type="tel" name="qty[]" maxlength="2" min="1">'+'<input type="button" value="delete" id="delete" /></div>')
+            });
+            $('body').on('click','#delete',function(e){
+                $(this).parent('div').remove();
+            })
+        });
+    </script>
 </html>

@@ -61,27 +61,27 @@
                     </a>
                 </li>
                 <li>
+                    <a href="create">
+                        <i class="ti-text"></i>
+                        <p>create</p>
+                    </a>
+                </li>
+                <li>
                     <a href="table">
                         <i class="ti-view-list-alt"></i>
                         <p>Table List</p>
                     </a>
                 </li>
                 <li>
-                    <a href="typography">
-                        <i class="ti-text"></i>
-                        <p>Typography</p>
+                    <a href="maps">
+                        <i class="ti-map"></i>
+                        <p>Maps</p>
                     </a>
                 </li>
                 <li class="active">
                     <a href="icons">
                         <i class="ti-pencil-alt2"></i>
                         <p>Icons</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="maps">
-                        <i class="ti-map"></i>
-                        <p>Maps</p>
                     </a>
                 </li>
                 <li>

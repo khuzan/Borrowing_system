@@ -60,6 +60,12 @@
                         <p>User Profile</p>
                     </a>
                 </li>
+                <li>
+                    <a href="create">
+                        <i class="ti-text"></i>
+                        <p>create</p>
+                    </a>
+                </li>
                 <li class="active">
                     <a href="table">
                         <i class="ti-view-list-alt"></i>
@@ -67,9 +73,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="typography">
-                        <i class="ti-text"></i>
-                        <p>Typography</p>
+                    <a href="maps">
+                        <i class="ti-map"></i>
+                        <p>Items</p>
                     </a>
                 </li>
                 <li>
@@ -79,21 +85,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="maps">
-                        <i class="ti-map"></i>
-                        <p>Maps</p>
-                    </a>
-                </li>
-                <li>
                     <a href="notifications">
                         <i class="ti-bell"></i>
                         <p>Notifications</p>
-                    </a>
-                </li>
-				<li class="active-pro">
-                    <a href="upgrade">
-                        <i class="ti-export"></i>
-                        <p>Upgrade to PRO</p>
                     </a>
                 </li>
             </ul>
@@ -135,12 +129,6 @@
                                 <li><a href="#">Another notification</a></li>
                               </ul>
                         </li>
-						<li>
-                            <a href="#">
-								<i class="ti-settings"></i>
-								<p>Settings</p>
-                            </a>
-                        </li>
                     </ul>
 
                 </div>
@@ -154,138 +142,57 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Striped Table</h4>
-                                <p class="category">Here is a subtitle for this table</p>
+                                <h4 class="title">Returned Items</h4>
                             </div>
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <th>ID</th>
-                                    	<th>Title</th>
-                                    	<th>Content</th>
-                                        <th>Action</th>
-                                    	<!-- <th>Country</th>
-                                    	<th>City</th> -->
-                                    </thead>
-                                    <tbody>
-                                        @foreach($articles as $article)
-                                        <tr>
-                                            <td>{{$article->id}}</td>
-                                            <td>{{$article->title}}</td>
-                                            <td>{{$article->content}}</td>
-                                            <td><a href="/table/{{$article->id}}">View</a>
-                                            | <a href="/table/{{$article->id}}/edit">Edit</a>|
-                                                <form action="table/{{$article->id}}" method="POST">
-                                                {{ csrf_field() }}
-                                                @method('DELETE')
-                                                <button type="submit" name="submit" value="Delete">Delete</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-12">
-                        <div class="card card-plain">
-                            <div class="header">
-                                <h4 class="title">Table on Plain Background</h4>
-                                <p class="category">Here is a subtitle for this table</p>
-                            </div>
-                            <a href="/table/create">CREATE</a>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover">
                                     <thead>
-                                        <th>ID</th>
-                                    	<th>Name</th>
-                                    	<th>Salary</th>
-                                    	<th>Country</th>
-                                    	<th>City</th>
+                                        <th>Borrower</th>
+                                        <th>Serial #</th>
+                                        <th>Item</th>
+                                        <th>QTY</th>
+                                        <th>Date borrowed</th>
+                                        <th>Returned data</th>
+                                        <th>Released by</th>
+                                        <th>Status</th>
                                     </thead>
+                                    @forelse($items as $item)
                                     <tbody>
                                         <tr>
-                                        	<td>1</td>
-                                        	<td>Dakota Rice</td>
-                                        	<td>$36,738</td>
-                                        	<td>Niger</td>
-                                        	<td>Oud-Turnhout</td>
+                                            <td>{{$item->name}}</td>
+                                            <td>{{$item->serial_number}}</td>
+                                            <td>{{$item->item}}</td>
+                                            <td>{{$item->qty}}</td>
+                                            <td>{{$item->date_borrowed}}</td>
+                                            <td>{{$item->returned_date}}</td>
+                                            <td>
+                                                <span class="bg-success text-success">
+                                                    {{$item->status}}
+                                                </span>
+                                            </td>
+                                            <td>{{$item->released_by}}</td>
                                         </tr>
+                                     @empty
                                         <tr>
-                                        	<td>2</td>
-                                        	<td>Minerva Hooper</td>
-                                        	<td>$23,789</td>
-                                        	<td>Curaçao</td>
-                                        	<td>Sinaai-Waas</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>3</td>
-                                        	<td>Sage Rodriguez</td>
-                                        	<td>$56,142</td>
-                                        	<td>Netherlands</td>
-                                        	<td>Baileux</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>4</td>
-                                        	<td>Philip Chaney</td>
-                                        	<td>$38,735</td>
-                                        	<td>Korea, South</td>
-                                        	<td>Overland Park</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>5</td>
-                                        	<td>Doris Greene</td>
-                                        	<td>$63,542</td>
-                                        	<td>Malawi</td>
-                                        	<td>Feldkirchen in Kärnten</td>
-                                        </tr>
-                                        <tr>
-                                        	<td>6</td>
-                                        	<td>Mason Porter</td>
-                                        	<td>$78,615</td>
-                                        	<td>Chile</td>
-                                        	<td>Gloucester</td>
-                                        </tr>
+                                            <td colspan="7">
+                                                <p>NO DATA</p>
+                                            </td>
+                                        </tr>   
                                     </tbody>
+                                    @endforelse
                                 </table>
 
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
 
         <footer class="footer">
             <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-
-                        <li>
-                            <a href="http://www.creative-tim.com">
-                                Creative Tim
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://blog.creative-tim.com">
-                               Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.creative-tim.com/license">
-                                Licenses
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
 				<div class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
+                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="#">khuzan</a>
                 </div>
             </div>
         </footer>

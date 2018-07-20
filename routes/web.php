@@ -28,20 +28,21 @@ Route::prefix('/')->group(function () {
     Route::get('table', function () {
     	return view('table');
     });
-    Route::get('typography', function () {
-    	return view('typography');
+    Route::get('create', function () {
+    	return view('create');
+    });
+    Route::get('maps', function () {
+        return view('maps');
     });
     Route::get('icons', function () {
     	return view('icons');
-    });
-    Route::get('maps', function () {
-    	return view('maps');
     });
     Route::get('notifications', function () {
     	return view('notifications');
     });
 });
 
-Route::resource('table','ArticlesController');
-Route::get('contactus', 'PagesController@contact');
+Route::resource('create','ArticlesController');
+Route::resource('items','itemController');
+Route::get('table', 'ArticlesController@table');
 Route::get('aboutus', 'PagesController@about');
